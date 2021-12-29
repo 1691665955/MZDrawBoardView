@@ -7,29 +7,29 @@
 
 import UIKit
 
-class MZDrawBoardView: UIView {
+open class MZDrawBoardView: UIView {
 
     /// 画笔颜色
-    var lineColor: UIColor = .black
+    public var lineColor: UIColor = .black
     
     /// 画笔线条宽度
-    var lineWidth: CGFloat = 4
+    public var lineWidth: CGFloat = 4
     
     private var startPoint: CGPoint?
     private var endPoint: CGPoint?
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
     
     /// 清空画板
-    open func clear() {
+    public func clear() {
         if let subLayers = self.layer.sublayers {
             for subLayer in subLayers {
                 subLayer.removeFromSuperlayer()
@@ -38,7 +38,7 @@ class MZDrawBoardView: UIView {
     }
     
     /// 画板生成图片
-    open func getImage() -> UIImage? {
+    public func getImage() -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
         guard let context = UIGraphicsGetCurrentContext() else {
             return nil
