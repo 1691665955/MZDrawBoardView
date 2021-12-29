@@ -7,7 +7,7 @@
 
 #### Cocoapods 引入
 ```
-pod 'MZCircleProgress', '~> 0.0.1'
+pod 'MZDrawBoardView', '~> 0.0.1'
 ```
 
 #### 使用
