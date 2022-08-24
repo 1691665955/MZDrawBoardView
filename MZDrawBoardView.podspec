@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   spec.name         = "MZDrawBoardView"
-  spec.version      = "0.0.1"
-  spec.summary      = "画板组件、实现简单绘画、清空、生成图片功能"
+  spec.version      = "0.0.2"
+  spec.summary      = "画板组件、实现简单绘画、清空、回退、生成图片功能"
   spec.homepage     = "https://github.com/1691665955/MZDrawBoardView"
   spec.authors         = { 'MZ' => '1691665955@qq.com' }
   spec.license      = { :type => "MIT", :file => "LICENSE" }

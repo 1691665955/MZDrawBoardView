@@ -20,8 +20,18 @@ class ViewController: UIViewController {
         self.drawBoardView.clear()
     }
     
+    @IBAction func back(_ sender: Any) {
+        self.drawBoardView.back()
+    }
+    
     @IBAction func saveImage(_ sender: Any) {
         self.imageView.image = self.drawBoardView.getImage()
     }
+    
+    @IBAction func selectColor(_ sender: UITapGestureRecognizer) {
+        self.drawBoardView.lineColor = sender.view?.backgroundColor ?? .black
+        self.drawBoardView.lineWidth = CGFloat(sender.view?.tag ?? 4)
+    }
+    
 }
 

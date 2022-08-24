@@ -18,6 +18,14 @@ open class MZDrawBoardView: UIView {
     private var startPoint: CGPoint?
     private var endPoint: CGPoint?
     
+    private lazy var layerList: [[CALayer]] = {
+        return [[CALayer]]()
+    }()
+    
+    private lazy var curLayerList: [CALayer] = {
+        return [CALayer]()
+    }()
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -34,6 +42,19 @@ open class MZDrawBoardView: UIView {
             for subLayer in subLayers {
                 subLayer.removeFromSuperlayer()
             }
+        }
+        
+        self.layerList.removeAll()
+    }
+    
+    
+    /// 回退
+    public func back() {
+        if let subLayerList = self.layerList.last {
+            for subLayer in subLayerList {
+                subLayer.removeFromSuperlayer()
+            }
+            self.layerList.removeLast()
         }
     }
     
@@ -69,6 +90,10 @@ open class MZDrawBoardView: UIView {
             self.startPoint = self.endPoint
             self.endPoint = pan.location(in: self)
             self.updateLayer()
+            if pan.state == .ended {
+                self.layerList.append(self.curLayerList)
+                self.curLayerList.removeAll()
+            }
         default:
             break
         }
@@ -78,6 +103,8 @@ open class MZDrawBoardView: UIView {
         self.startPoint = tap.location(in: self)
         self.endPoint = tap.location(in: self)
         self.updateLayer()
+        self.layerList.append(self.curLayerList)
+        self.curLayerList.removeAll()
     }
     
     private func updateLayer() {
@@ -92,6 +119,7 @@ open class MZDrawBoardView: UIView {
         shapeLayer.path = path.cgPath
         shapeLayer.lineJoin = .round
         shapeLayer.lineCap = .round
+        self.curLayerList.append(shapeLayer)
         self.layer.addSublayer(shapeLayer)
     }
 }

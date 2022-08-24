@@ -1,5 +1,5 @@
 # MZDrawBoardView
-画板组件、实现简单绘画、清空、生成图片功能
+画板组件、实现简单绘画、清空、回退、生成图片功能
 
 <div align=center>
 <img src="1.gif" width="300px" />
@@ -7,7 +7,7 @@
 
 #### Cocoapods 引入
 ```
-pod 'MZDrawBoardView', '~> 0.0.1'
+pod 'MZDrawBoardView', '~> 0.0.2'
 ```
 
 #### 使用
@@ -22,6 +22,9 @@ self.view.addSubview(drawBorad)
 
 // 清空画板内容
 drawBorad.clear()
+
+// 回退
+drawBorad.back()
 
 // 画板内容生成图片
 let image = drawBorad.getImage()
